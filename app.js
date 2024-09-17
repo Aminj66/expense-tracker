@@ -21,3 +21,6 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
 const userRoutes = require('./routes/userRoutes');
 app.use('/api/users', userRoutes);
 
+const expenseRoutes = require('./routes/expenseRoutes');
+app.use('/api/expenses', expenseRoutes);
+
