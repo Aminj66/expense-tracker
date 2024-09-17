@@ -1,36 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Expense Tracker</title>
-  <link rel="stylesheet" href="css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker | Financial Freedom Awaits</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            overflow-x: hidden;
+        }
+        header {
+            background: linear-gradient(90deg, rgba(40,53,147,1) 0%, rgba(25,32,72,1) 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        header p {
+            font-size: 20px;
+            font-weight: 300;
+            margin-bottom: 40px;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+            background-color: #1a237e;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: #ffcc00;
+        }
+        .hero-section {
+            background-image: url('https://source.unsplash.com/1600x900/?finance,planning');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .hero-section h2 {
+            font-size: 42px;
+            font-weight: bold;
+        }
+        .hero-section p {
+            font-size: 20px;
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+        .hero-section button {
+            margin-top: 40px;
+            padding: 15px 30px;
+            background-color: #ffcc00;
+            border: none;
+            color: black;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .hero-section button:hover {
+            background-color: #ffb300;
+        }
+        .features {
+            background-color: #f9f9f9;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .features h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #283593;
+        }
+        .feature-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 40px;
+        }
+        .feature {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            width: 28%;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .feature:hover {
+            transform: translateY(-10px);
+        }
+        .feature img {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+        .feature h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .feature p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .testimonials {
+            background-color: #f4f4f4;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .testimonials h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: #283593;
+        }
+        .testimonial-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 40px;
+        }
+        .testimonial {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            width: 30%;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .testimonial img {
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+        }
+        .testimonial p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .testimonial h4 {
+            font-size: 20px;
+            font-weight: bold;
+            color: #283593;
+        }
+        footer {
+            background-color: #1a237e;
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        footer p {
+            margin-bottom: 20px;
+        }
+        footer a {
+            color: #ffcc00;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .feature-container, .testimonial-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .feature, .testimonial {
+                width: 80%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <div class="container">
     <header>
-      <h1>Expense Tracker</h1>
-      <button id="logoutBtn">Logout</button>
+        <h1>Expense Tracker</h1>
+        <p>Your Journey to Financial Freedom Starts Here</p>
     </header>
 
-    <section class="form-section">
-      <h2>Add New Expense</h2>
-      <form id="expenseForm">
-        <input type="number" id="amount" placeholder="Amount" required>
-        <input type="text" id="category" placeholder="Category" required>
-        <textarea id="description" placeholder="Description"></textarea>
-        <button type="submit">Add Expense</button>
-      </form>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="reports.html">Reports</a>
+        <a href="planning.html">Planning</a>
+    </nav>
+
+    <div class="hero-section">
+        <div>
+            <h2>Track Your Expenses with Ease</h2>
+            <p>Take control of your finances, set budgets, and plan for a brighter future.</p>
+            <button onclick="window.location.href='planning.html'">Start Planning Now</button>
+        </div>
+    </div>
+
+    <section class="features">
+        <h2>Our Key Features</h2>
+        <div class="feature-container">
+            <div class="feature">
+                <img src="https://img.icons8.com/cotton/64/000000/budget.png" alt="Budget Icon">
+                <h3>Budget Tracking</h3>
+                <p>Set monthly budgets and track your expenses to avoid overspending.</p>
+            </div>
+            <div class="feature">
+                <img src="https://img.icons8.com/cotton/64/000000/financial-growth.png" alt="Goal Icon">
+                <h3>Financial Goals</h3>
+                <p>Define your financial goals and achieve them with personalized tracking.</p>
+            </div>
+            <div class="feature">
+                <img src="https://img.icons8.com/cotton/64/000000/report.png" alt="Reports Icon">
+                <h3>Detailed Reports</h3>
+                <p>Generate detailed reports to analyze your spending habits and improve financial health.</p>
+            </div>
+        </div>
     </section>
 
-    <section class="expense-list-section">
-      <h2>Your Expenses</h2>
-      <div id="expenseList"></div>
+    <section class="testimonials">
+        <h2>What Our Users Say</h2>
+        <div class="testimonial-container">
+            <div class="testimonial">
+                <img src="https://i.pravatar.cc/100?img=1" alt="User 1">
+                <p>"This tool has completely changed the way I manage my money. I feel more in control than ever before!"</p>
+                <h4>- Sarah K.</h4>
+            </div>
+            <div class="testimonial">
+                <img src="https://i.pravatar.cc/100?img=2" alt="User 2">
+                <p>"Setting financial goals has never been easier. I can track everything in one place."</p>
+                <h4>- Mike T.</h4>
+            </div>
+            <div class="testimonial">
+                <img src="https://i.pravatar.cc/100?img=3" alt="User 3">
+                <p>"The reports feature helps me see where my money is going. It's a game-changer!"</p>
+                <h4>- Jenny W.</h4>
+            </div>
+        </div>
     </section>
-  </div>
 
-  <script src="js/main.js"></script>
+    <footer>
+        <p>&copy; 2024 Expense Tracker | Your Financial Freedom Starts Now</p>
+        <a href="about.html">Learn More About Us</a>
+    </footer>
+
 </body>
 </html>
-

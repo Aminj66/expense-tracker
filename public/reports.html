@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports | Expense Tracker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            overflow-x: hidden;
+        }
+        header {
+            background: linear-gradient(90deg, rgba(40,53,147,1) 0%, rgba(25,32,72,1) 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+            background-color: #1a237e;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: #ffcc00;
+        }
+
+        .hero-section {
+            background-image: url('https://source.unsplash.com/1600x900/?graphs,finance');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .hero-section h2 {
+            font-size: 42px;
+            font-weight: bold;
+        }
+        .hero-section p {
+            font-size: 20px;
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+        .hero-section button {
+            margin-top: 40px;
+            padding: 15px 30px;
+            background-color: #ffcc00;
+            border: none;
+            color: black;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .hero-section button:hover {
+            background-color: #ffb300;
+        }
+
+        .filter-section {
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .filter-section h2 {
+            font-size: 32px;
+            color: #283593;
+            margin-bottom: 20px;
+        }
+        .filter-section form {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .filter-section input, .filter-section select {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            width: 250px;
+        }
+        .filter-section button {
+            padding: 12px 30px;
+            background-color: #283593;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .filter-section button:hover {
+            background-color: #3949ab;
+        }
+
+        .charts-section {
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .charts-section h2 {
+            font-size: 32px;
+            margin-bottom: 40px;
+            color: #283593;
+        }
+        .chart-container {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+        .chart {
+            background-color: #fff;
+            width: 45%;
+            min-width: 300px;
+            height: 300px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            color: #555;
+        }
+
+        footer {
+            background-color: #1a237e;
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        footer p {
+            margin-bottom: 20px;
+        }
+        footer a {
+            color: #ffcc00;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .chart-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .chart {
+                width: 80%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Expense Tracker - Reports</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="reports.html">Reports</a>
+        <a href="planning.html">Planning</a>
+    </nav>
+
+    <!-- Hero Section with Call to Action -->
+    <div class="hero-section">
+        <div>
+            <h2>Analyze Your Spending</h2>
+            <p>Generate detailed reports, visualize your spending habits, and take control of your financial future.</p>
+            <button onclick="window.location.href='planning.html'">Start Planning</button>
+        </div>
+    </div>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <h2>Filter Your Reports</h2>
+        <form>
+            <input type="date" name="start-date" placeholder="Start Date" required>
+            <input type="date" name="end-date" placeholder="End Date" required>
+            <select name="category">
+                <option value="">Select Category</option>
+                <option value="Food">Food</option>
+                <option value="Transport">Transport</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Utilities">Utilities</option>
+                <option value="Housing">Housing</option>
+                <option value="Health">Health</option>
+                <option value="Education">Education</option>
+                <option value="Groceries">Groceries</option>
+                <option value="Clothing">Clothing</option>
+                <option value="Insurance">Insurance</option>
+                <option value="Subscriptions">Subscriptions</option>
+                <option value="Savings">Savings</option>
+                <option value="Investments">Investments</option>
+                <option value="Debt Repayment">Debt Repayment</option>
+                <option value="Donations">Donations</option>
+                <option value="Gifts">Gifts</option>
+                <option value="Dining Out">Dining Out</option>
+                <option value="Travel">Travel</option>
+                <option value="Fitness">Fitness</option>
+                <option value="Pets">Pets</option>
+                <option value="Miscellaneous">Miscellaneous</option>
+                <!-- Add more categories as needed -->
+            </select>
+            <button type="submit">Generate Report</button>
+        </form>
+    </section>
+
+    <!-- Charts Section -->
+    <section class="charts-section">
+        <h2>Visualize Your Data</h2>
+        <div class="chart-container">
+            <div class="chart">Bar Chart Placeholder</div>
+            <div class="chart">Pie Chart Placeholder</div>
+        </div>
+        <div class="chart-container">
+            <div class="chart">Line Chart Placeholder</div>
+            <div class="chart">Area Chart Placeholder</div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Expense Tracker | Your Financial Freedom Starts Now</p>
+        <a href="about.html">Learn More About Us</a>
+    </footer>
+
+</body>
+</html>
