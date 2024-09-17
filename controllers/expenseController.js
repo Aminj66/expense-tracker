@@ -5,15 +5,14 @@ exports.createExpense = async (req, res) => {
   const { amount, category, description } = req.body;
 
   try {
-    const newExpense = new Expense({
-      userId: req.user.id,
+    const newExpense = await Expense.create({
       amount,
       category,
       description,
+      userId: req.user.id,
     });
 
-    const savedExpense = await newExpense.save();
-    res.status(201).json(savedExpense);
+    res.status(201).json(newExpense);
   } catch (error) {
     res.status(500).json({ message: "Error occurred while creating expense", error });
   }
@@ -22,7 +21,7 @@ exports.createExpense = async (req, res) => {
 // Get all expenses for a user
 exports.getExpenses = async (req, res) => {
   try {
-    const expenses = await Expense.find({ userId: req.user.id });
+    const expenses = await Expense.findAll({ where: { userId: req.user.id } });
     res.status(200).json(expenses);
   } catch (error) {
     res.status(500).json({ message: "Error occurred while fetching expenses", error });
@@ -34,19 +33,17 @@ exports.updateExpense = async (req, res) => {
   const { amount, category, description } = req.body;
 
   try {
-    const expense = await Expense.findById(req.params.id);
-    if (!expense) return res.status(404).json({ message: 'Expense not found' });
-
-    if (expense.userId.toString() !== req.user.id) {
-      return res.status(401).json({ message: 'Unauthorized' });
+    const expense = await Expense.findByPk(req.params.id);
+    if (!expense || expense.userId !== req.user.id) {
+      return res.status(404).json({ message: "Expense not found or unauthorized" });
     }
 
     expense.amount = amount || expense.amount;
     expense.category = category || expense.category;
     expense.description = description || expense.description;
 
-    const updatedExpense = await expense.save();
-    res.status(200).json(updatedExpense);
+    await expense.save();
+    res.status(200).json(expense);
   } catch (error) {
     res.status(500).json({ message: "Error occurred while updating expense", error });
   }
@@ -55,15 +52,13 @@ exports.updateExpense = async (req, res) => {
 // Delete an expense
 exports.deleteExpense = async (req, res) => {
   try {
-    const expense = await Expense.findById(req.params.id);
-    if (!expense) return res.status(404).json({ message: 'Expense not found' });
-
-    if (expense.userId.toString() !== req.user.id) {
-      return res.status(401).json({ message: 'Unauthorized' });
+    const expense = await Expense.findByPk(req.params.id);
+    if (!expense || expense.userId !== req.user.id) {
+      return res.status(404).json({ message: "Expense not found or unauthorized" });
     }
 
-    await expense.deleteOne();
-    res.status(200).json({ message: 'Expense deleted' });
+    await expense.destroy();
+    res.status(200).json({ message: "Expense deleted" });
   } catch (error) {
     res.status(500).json({ message: "Error occurred while deleting expense", error });
   }
