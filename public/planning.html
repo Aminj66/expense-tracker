@@ -1,89 +1,308 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Planning | Expense Tracker</title>
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #283593;
-            color: white;
-            padding: 15px;
-            text-align: center;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        nav {
-            background-color: #1a237e;
-            color: white;
-            padding: 10px 0;
-            text-align: center;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 15px 20px;
-            display: inline-block;
-        }
-        nav a:hover {
-            background-color: #3949ab;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-        h1, h2 {
-            color: #283593;
-        }
-        p {
-            font-size: 18px;
-            line-height: 1.6;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Financial and Task Planning Dashboard</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      overflow-x: hidden;
+    }
+    header {
+      background: linear-gradient(90deg, rgba(40,53,147,1) 0%, rgba(25,32,72,1) 100%);
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+    }
+    header p {
+      font-size: 20px;
+      font-weight: 300;
+      margin-bottom: 40px;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      padding: 20px 0;
+      background-color: #1a237e;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      margin: 0 15px;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #ffcc00;
+    }
+    .hero-section {
+      background-image: url('https://source.unsplash.com/1600x900/?finance,planning');
+      background-size: cover;
+      background-position: center;
+      height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    .hero-section h2 {
+      font-size: 42px;
+      font-weight: bold;
+    }
+    .hero-section p {
+      font-size: 20px;
+      margin-top: 20px;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .header-section {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .header-section h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+    .header-section p {
+      font-size: 18px;
+      color: #666;
+    }
+    .task-management-section, .financial-overview-section, .calendar-section, .planning-tools-section {
+      margin-bottom: 50px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+    }
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+    th, td {
+      padding: 15px;
+      text-align: left;
+    }
+    th {
+      background-color: #283593;
+      color: white;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .goal-progress-bar {
+      width: 100%;
+      height: 25px;
+      background-color: #ddd;
+      margin: 10px 0;
+    }
+    .goal-progress-bar div {
+      height: 100%;
+      background-color: #4CAF50;
+    }
+    footer {
+      background-color: #1a237e;
+      color: white;
+      padding: 40px;
+      text-align: center;
+    }
+    footer p {
+      margin-bottom: 20px;
+    }
+    footer a {
+      color: #ffcc00;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
 
-    <header>
-        Planning Your Finances - Build a Future with Precision
+  <header>
+    <h1>Planning Dashboard</h1>
+    <p>Manage Your Tasks, Finances, and Goals in One Place</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="planning.html" class="active">Planning</a>
+    <a href="reports.html">Reports</a>
+    <a href="settings.html">Settings</a>
+  </nav>
+
+  <div class="hero-section">
+    <div>
+      <h2>Plan for Success</h2>
+      <p>Track your tasks, manage your finances, and achieve your goals with ease.</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <header class="header-section">
+      <h1>Financial & Task Planning Dashboard</h1>
+      <p>Overview of your current financial health and task progress.</p>
     </header>
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="reports.html">Reports</a>
-        <a href="planning.html">Planning</a>
-    </nav>
+    <!-- Task Management Section -->
+    <section class="task-management-section">
+      <h2>Task Management</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Task</th>
+            <th>Due Date</th>
+            <th>Priority</th>
+            <th>Progress</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="taskList">
+          <!-- JavaScript will populate tasks here -->
+        </tbody>
+      </table>
+      <button id="addTaskBtn">Add Task</button>
+    </section>
 
-    <div class="container">
-        <h1>Financial Planning & Customization</h1>
+    <!-- Financial Overview Section -->
+    <section class="financial-overview-section">
+      <h2>Financial Overview</h2>
+      <canvas id="financialChart"></canvas>
+      <div class="goal-progress-bar">
+        <div id="progressBar" style="width: 50%;"></div>
+      </div>
+      <p id="goalStatus">50% of your financial goal has been achieved.</p>
+    </section>
 
-        <p>Plan your finances carefully to meet your long-term goals. This page helps you set monthly budgets, customize expense categories, and track your financial progress.</p>
+    <!-- Planning Tools Section -->
+    <section class="planning-tools-section">
+      <h2>Planning Tools</h2>
+      <div class="tools-container">
+        <div class="tool-item">
+          <h3>Set Financial Goals</h3>
+          <p>Define your savings or budgeting goals and track your progress.</p>
+          <button id="setGoalBtn">Set New Goal</button>
+        </div>
+        <div class="tool-item">
+          <h3>Track Expenses</h3>
+          <p>Track your expenses and understand where your money goes.</p>
+          <button id="trackExpensesBtn">Track Expenses</button>
+        </div>
+        <div class="tool-item">
+          <h3>Manage Deadlines</h3>
+          <p>Keep your tasks organized and meet your deadlines efficiently.</p>
+          <button id="manageDeadlinesBtn">Manage Deadlines</button>
+        </div>
+      </div>
+    </section>
+  </div>
 
-        <h2>Set Monthly Budget</h2>
-        <p>Define your monthly budget and track your spending to stay within limits.</p>
-        <input type="number" placeholder="Enter your monthly budget" />
+  <footer>
+    <p>&copy; 2024 Planning Dashboard | Financial and Task Management</p>
+    <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a>
+  </footer>
 
-        <h2>Customize Categories</h2>
-        <p>Add or remove categories based on your spending patterns.</p>
-        <input type="text" placeholder="New category name" />
-        <button>Add Category</button>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Add functionality to buttons
+      document.getElementById('addTaskBtn').addEventListener('click', () => {
+        alert('Add Task functionality is coming soon.');
+      });
+      
+      document.getElementById('setGoalBtn').addEventListener('click', () => {
+        alert('Set Financial Goal feature coming soon.');
+      });
+      
+      document.getElementById('trackExpensesBtn').addEventListener('click', () => {
+        alert('Track Expenses feature is coming soon.');
+      });
+      
+      document.getElementById('manageDeadlinesBtn').addEventListener('click', () => {
+        alert('Manage Deadlines feature is coming soon.');
+      });
 
-        <h2>Track Savings Goals</h2>
-        <p>Set savings targets and monitor your progress over time.</p>
-        <input type="number" placeholder="Enter savings goal" />
-        <button>Save Goal</button>
-    </div>
+      // Task List Example Data
+      const tasks = [
+        { name: "Prepare Monthly Report", dueDate: "2024-09-30", priority: "High", progress: "80%" },
+        { name: "Submit Tax Forms", dueDate: "2024-10-05", priority: "Medium", progress: "50%" }
+      ];
+
+      const taskList = document.getElementById('taskList');
+      tasks.forEach(task => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${task.name}</td>
+          <td>${task.dueDate}</td>
+          <td>${task.priority}</td>
+          <td>
+            <div class="goal-progress-bar">
+              <div style="width: ${task.progress};"></div>
+            </div>
+          </td>
+          <td>
+            <button>Edit</button> <button>Delete</button>
+          </td>
+        `;
+        taskList.appendChild(row);
+      });
+
+      // Chart.js Example for Financial Overview
+      const ctx = document.getElementById('financialChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['January', 'February', 'March', 'April', 'May'],
+          datasets: [{
+            label: 'Expenses',
+            data: [300, 500, 400, 600, 800],
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 2,
+            fill: false
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
